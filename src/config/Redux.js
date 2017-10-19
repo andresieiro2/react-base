@@ -3,7 +3,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { routerMiddleware } from 'react-router-redux';
 
-import reducers from './../data/Reducers';
+import reducers from './../store/Reducers';
 import history from './routes/History';
 
 const routerHistoryMiddleware = routerMiddleware(history);
@@ -17,4 +17,3 @@ export const store = createStore(
   reducers,
   applyMiddleware(...middlewares),
 );
-

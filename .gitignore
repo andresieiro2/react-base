@@ -3,5 +3,4 @@ tmp/*
 build/
 !.gitkeep
 npm-debug.log
-yarn.lock
 .DS_Store

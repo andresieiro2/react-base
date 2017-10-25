@@ -11,10 +11,3 @@ export default class ApplicationLayout extends React.Component {
   }
 
 }
-
-ApplicationLayout.propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.arrayOf(React.PropTypes.node),
-    React.PropTypes.node,
-  ]),
-};

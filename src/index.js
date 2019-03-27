@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
-import { store } from './config/Redux';
-import routes from './config/routes';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
 
-import './config/stylesheets/application.scss';
-
-require.context('./../public/');
-
-if (module.hot) {
-  module.hot.accept();
-}
-
+import { store } from './store/Redux';
 
 ReactDOM.render(
-  <Provider store={store}>
-    {routes(store)}
-  </Provider>,
-  document.getElementById('yield'),
+  <Fragment>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </Fragment>,
+  document.getElementById('root')
 );
+
+// If you want your app to work offline and load faster, you can change
+// unregister() to register() below. Note this comes with some pitfalls.
+// Learn more about service workers: http://bit.ly/CRA-PWA
+serviceWorker.unregister();

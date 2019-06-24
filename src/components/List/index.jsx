@@ -29,7 +29,7 @@ const List = () => {
         list.map((item, index) => (
           <a
             className={classNames({ disabled: !item.active }, 'item')}
-            href={item.link}
+            href="#"
             key={`list-users-${index}`}
           >
             <img className="picture" src={user} alt={item.description} />

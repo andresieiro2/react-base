@@ -24,9 +24,8 @@ export const getList = () => {
             {
               description: 'teste desativo',
               active: false,
-              picture: 'dead.png',
             },
-            { description: 'teste ativo', active: true, picture: 'user.png' },
+            { description: 'teste ativo', active: true },
           ],
         });
       }, 2000);

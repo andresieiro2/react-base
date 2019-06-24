@@ -9,8 +9,9 @@ const HeaderStyle = styled.header`
   height: 105px;
   position: relative;
 
-  img {
+  .logo {
     align-self: center;
+    max-width: 150px;
   }
 
   .btn-logout {

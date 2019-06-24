@@ -24,6 +24,10 @@ const List = styled.div`
       font-family: Arial;
       font-size: 14px;
     }
+
+    &.disabled {
+      opacity: 0.2;
+    }
   }
 `;
 

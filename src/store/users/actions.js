@@ -1,45 +1,37 @@
 import * as types from './actionTypes';
-import * as LoadingActions from '../loading/actions';
-import { get } from '../../utils/request';
+import { setLoading } from '../loading/actions';
 
-import env from '../../env';
-
-const { API_URL } = env;
-
-export const setListUsers = listUsers => ({
-  type: types.SET_LIST_USERS,
-  listUsers,
+export const setFilterUser = filterUsers => ({
+  type: types.SET_FILTER_USER,
+  filterUsers,
 });
 
-export const setUserInfo = userInfo => ({
-  type: types.USER_INFO,
-  userInfo,
+export const listLoaded = data => ({
+  type: types.LIST_LOADED,
+  data,
+  loading: false,
 });
 
-export const getListUsers = limit => async dispatch => {
-  dispatch(LoadingActions.setLoading(true));
+export const getList = () => {
+  return async (dispatch, getState) => {
+    dispatch(setLoading(true));
 
-  try {
-    const users = await get(`${API_URL}/users?since=${limit}`);
+    // fake call service
+    const res = await new Promise(resolve => {
+      setTimeout(() => {
+        resolve({
+          data: [
+            {
+              description: 'teste desativo',
+              active: false,
+              picture: 'dead.png',
+            },
+            { description: 'teste ativo', active: true, picture: 'user.png' },
+          ],
+        });
+      }, 2000);
+    });
 
-    dispatch(setListUsers(users));
-  } catch (err) {
-    console.log(err);
-  }
-
-  dispatch(LoadingActions.setLoading(false));
-};
-
-export const getUserDetail = login => async dispatch => {
-  dispatch(LoadingActions.setLoading(true));
-
-  try {
-    const info = await get(`${API_URL}/users/${login}`);
-
-    dispatch(setUserInfo(info));
-  } catch (err) {
-    console.log(err);
-  }
-
-  dispatch(LoadingActions.setLoading(false));
+    return dispatch(listLoaded(res.data));
+  };
 };

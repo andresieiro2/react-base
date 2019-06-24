@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
@@ -8,11 +8,11 @@ import * as serviceWorker from './serviceWorker';
 import { store } from './store/Redux';
 
 ReactDOM.render(
-  <Fragment>
+  <>
     <Provider store={store}>
       <App />
     </Provider>
-  </Fragment>,
+  </>,
   document.getElementById('root')
 );
 
